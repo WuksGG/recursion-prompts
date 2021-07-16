@@ -47,17 +47,34 @@ var arraySum = function(array) {
 
 // 4. Check if a number is even.
 var isEven = function(n) {
+  if (!n) {
+    return true;
+  } else if (n === 1) {
+    return false;
+  }
+  return n > 0 ? isEven(n - 2) : isEven(n + 2);
 };
 
 // 5. Sum all integers below a given integer.
 // sumBelow(10); // 45
 // sumBelow(7); // 21
 var sumBelow = function(n) {
+  if (!n) {
+    return 0;
+  }
+  return n > 0 ? n - 1 + sumBelow(n - 1) : n + 1 + sumBelow(n + 1);
 };
 
 // 6. Get the integers within a range (x, y).
 // range(2,9); // [3,4,5,6,7,8]
 var range = function(x, y) {
+  var array = [];
+  if (x === y - 1 || x === y || x === y + 1) {
+    return array;
+  }
+  array.push(y > x ? x + 1 : x - 1);
+  var joined = array.concat(range(y > x ? x + 1 : x - 1, y));
+  return joined;
 };
 
 // 7. Compute the exponent of a number.
