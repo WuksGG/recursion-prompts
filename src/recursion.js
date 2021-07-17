@@ -83,6 +83,19 @@ var range = function(x, y) {
 // exponent(4,3); // 64
 // https://www.khanacademy.org/computing/computer-science/algorithms/recursive-algorithms/a/computing-powers-of-a-number
 var exponent = function(base, exp) {
+  if (exp === 1) return base;
+  if (!exp) return 1;
+
+  if (exp > 0) {
+    if (!(exp % 2)) {
+      var result = exponent(base, exp / 2);
+      return  result * result;
+    } else {
+      return base * exponent(base, exp - 1);
+    }
+  } else {
+    return 1 / (base * exponent(base, (exp * -1) - 1));
+  }
 };
 
 // 8. Determine if a number is a power of two.
@@ -233,6 +246,11 @@ var flatten = function(array) {
 // 31. Given a string, return an object containing tallies of each letter.
 // letterTally('potato'); // {p:1, o:2, t:2, a:1}
 var letterTally = function(str, obj) {
+  // if (!str.length) return {};
+  // var strArr = str.slice('');
+  // var lastChar = strArr.pop();
+  // obj[lastChar] ? obj.lastChar++ : obj[lastChar] = 1;
+  // return letterTally(strArr.join(''), obj);
 };
 
 // 32. Eliminate consecutive duplicates in a list. If the list contains repeated
