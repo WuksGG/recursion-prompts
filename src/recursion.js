@@ -318,6 +318,25 @@ var alternateSign = function(array) {
 // Assume all numbers are single digits (less than 10).
 // numToText("I have 5 dogs and 6 ponies"); // "I have five dogs and six ponies"
 var numToText = function(str) {
+  var strNum = [
+    'zero',
+    'one',
+    'two',
+    'three',
+    'four',
+    'five',
+    'six',
+    'seven',
+    'eight',
+    'nine'
+  ];
+  var strToArr = str.split('');
+  var last = strToArr.pop();
+  if (parseInt(last) > -1) {
+    last = strNum[Number(last)];
+  }
+  if (strToArr.length === 0) return last;
+  return numToText(strToArr.join('')).concat(last);
 };
 
 
