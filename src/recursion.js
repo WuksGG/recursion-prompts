@@ -128,9 +128,8 @@ var palindrome = function(string) {
   if (string.length < 2) return true;
   if (string[0] === string[string.length - 1]) {
     return palindrome(string.substring(1, -1));
-  } else {
-    return false;
   }
+  return false;
 };
 
 // 11. Write a function that returns the remainder of x divided by y without using the
@@ -139,6 +138,21 @@ var palindrome = function(string) {
 // modulo(17,5) // 2
 // modulo(22,6) // 4
 var modulo = function(x, y) {
+  if (!y) return NaN;
+  if (!x || x === y) return 0;
+  if (x > 0 && y > 0) {
+    if (x < y) return x;
+    return modulo(x - y, y);
+  } else if (x < 0 && y < 0) {
+    if (x > y) return x;
+    return modulo(x - y, y);
+  } else if (x > 0 && y < 0) {
+    if (x < -y) return x;
+    return modulo(x + y, y);
+  } else if (x < 0 && y > 0) {
+    if (-x < y) return x;
+    return modulo(x + y, y);
+  }
 };
 
 // 12. Write a function that multiplies two numbers without using the * operator or
