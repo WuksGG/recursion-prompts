@@ -220,6 +220,30 @@ var buildList = function(value, length) {
 // For numbers which are multiples of both three and five, output “FizzBuzz” instead of the number.
 // fizzBuzz(5) // ['1','2','Fizz','4','Buzz']
 var fizzBuzz = function(n) {
+  // base case
+  if (n === 1) return ['1'];
+  // recursive cases
+  if (n % 5) {
+    // not evenly divisible by 5
+    if (n % 3) {
+      // not evenly divisible by 3 or 5
+      return fizzBuzz(n - 1).concat([n.toString()]);
+    } else {
+      // not evenly divisible by 5
+      // divisible by 3
+      return fizzBuzz(n - 1).concat(['Fizz']);
+    }
+  } else {
+    // evenly divisible by 5
+    if (n % 3) {
+      // not evenly divisible by 3
+      // evenly divisible by 5
+      return fizzBuzz(n - 1).concat(['Buzz']);
+    } else {
+      // evenly divisible by both
+      return fizzBuzz(n - 1).concat(['FizzBuzz']);
+    }
+  }
 };
 
 // 20. Count the occurrence of a value in a list.
