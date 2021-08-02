@@ -800,6 +800,7 @@
         expect(divide(78, 453)).to.equal(~~(78 / 453));
         expect(divide(-79, 82)).to.equal(~~(-79 / 82));
         expect(divide(-275, -582)).to.equal(~~(-275 / -582));
+        expect(divide(-8539, 582)).to.equal(~~(-8539 / 582));
         expect(divide(0, 32)).to.equal(~~(0 / 32));
         expect(divide(0, 0)).to.be.NaN;
       });
